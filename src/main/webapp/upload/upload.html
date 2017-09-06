@@ -1,0 +1,44 @@
+<style type="text/css">
+    .fileinput-button
+    {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .fileinput-button input
+    {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        transform: translate(-300px, 0) scale(4);
+        font-size: 23px;
+        direction: ltr;
+        cursor: pointer;
+    }
+</style>
+
+<div ng-controller="FileUploadCtrl" class="col-xs-3 centering">
+    <div class="row">
+        <div class="control-group col-xs-4">
+            <div class="controls">
+            <span class="btn btn-link fileinput-button">
+                <i class="icon-plus icon-white"></i>
+                <input type="file" name="file" data-url="/rest/uploadFiles" upload><span>Velg fil</span>
+            </span>
+            </div>
+        </div>
+
+        <div class="col-xs-7">
+            <span ng-show="!files.length">Ingen fil valgt</span>
+            <span ng-show="files.length">
+                <strong ng-repeat="file in files">{{file}}</strong>
+            </span>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="upload()">Send inn</button>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="row">
+    <a href="/rest/export/csv" class="btn btn-primary active">Hent fil</a>
+
+    <div class="col-md-12" ng-repeat="group in competitionGroups2">
+        <h4>{{group.category}} {{group.level}} </h4>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped table-condensed">
+                    <thead>
+                    <th width="45%">Navn</th>
+                    <th width="10%" align="right">Alder</th>
+                    <th width="45%">Danseskole</th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="dancer in group.dancers">
+                        <td>{{dancer.name}}</td>
+                        <td align="right">{{dancer.age}}</td>
+                        <td>{{dancer.school}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4">
+                Test
+                <button>Ny aldersgruppe</button>
+            </div>
+        </div>
+    </div>
+</div>

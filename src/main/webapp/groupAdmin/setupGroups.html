@@ -1,0 +1,43 @@
+<div class="row">
+    <a href="/rest/export/csv" class="btn btn-primary active">Hent fil</a>
+
+    <div class="col-md-12">
+        <h4>Gruppeinndeling</h4>
+        <div class="col-md-12" ng-repeat="group in competitionGroups" ng-show="group.ageGroups.length > 0">
+            <h5>{{group.category}} {{group.level}}</h5>
+            <table class="table-condensed" border="1">
+                <tr>
+                    <td style="width:150px;" ng-repeat="ageGroup in group.ageGroups" ng-show="ageGroup.dancers.length > 0">
+                        <!--a href="" ng-click="scrollTo({{group.category}}-{{group.level}}-{{$index}})"-->
+                            {{ageGroup.description}} <small>({{ageGroup.dancers.length}} påmeldt)</small>
+                        <!--/a-->
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-repeat="group in competitionGroups">
+        <div class="row" ng-repeat="ageGroup in group.ageGroups">
+            <div class="col-md-8" ng-show="ageGroup.dancers.length > 0">
+                <h4 id="{{group.category}}-{{group.level}}-{{$index}}">
+                        {{group.category}} {{group.level}} {{ageGroup.description}} <small>({{ageGroup.dancers.length}} påmeldt)</small>
+                </h4>
+                <table class="table table-striped table-condensed">
+                    <thead>
+                    <th width="48%">Navn</th>
+                    <th width="7%" align="right">Alder</th>
+                    <th width="45%">Danseskole</th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="dancer in ageGroup.dancers">
+                        <td>{{dancer.name}}</td>
+                        <td align="right" style="padding-right: 12px;">{{(dancer.age > 0) ? dancer.age : ''}}</td>
+                        <td>{{dancer.school}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

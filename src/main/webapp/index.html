@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="competitionApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.fileupload.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-resource.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="create/competitionControllers.js"></script>
+    <script src="upload/uploadControllers.js"></script>
+    <script src="upload/uploadServices.js"></script>
+    <script src="upload/uploadDirectives.js"></script>
+    <script src="schoolAdmin/schoolAdminControllers.js"></script>
+    <script src="schoolAdmin/schoolAdminServices.js"></script>
+    <script src="groupAdmin/groupAdminControllers.js"></script>
+    <script src="groupAdmin/groupAdminServices.js"></script>
+
+    <style type="text/css">
+        html, body{height:100%; margin:0;padding:0}
+
+        .container-fluid{
+            height:100%;
+            display:table;
+            width: 100%;
+            padding: 0;
+        }
+
+        .row-fluid {height: 100%; display:table-cell; vertical-align: middle;}
+
+
+
+        .centering {
+            float:none;
+            margin:0 auto;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+    </style>
+    <title>Planlegg dansekonkurranse (v.17.6)</title>
+</head>
+<body bgcolor="black">
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div ng-view class="centering"></div>
+    </div>
+</div>
+
+</body>
+</html>

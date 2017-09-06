@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+
+</style>
+<!--[if gte mso 9]>
+
+<![endif]-->
+</head>
+<body>
+<table id="ctl00_MainContent_RadGrid1_ctl00" style="width:100%;table-layout:auto;empty-cells:show;">
+	<colgroup>
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+		<col  />
+	</colgroup>
+<thead>
+		<tr>
+			<th scope="col">OrderID</th><th scope="col">Etternavn</th><th scope="col">Fornavn</th><th scope="col">E-post adresse</th><th scope="col">Mobil</th><th scope="col">Klasse/kategori</th><th scope="col">Pris</th><th scope="col">Betalingsmetode</th><th scope="col">Bestilt</th><th scope="col">Betalt</th><th scope="col">Utbetalt</th><th scope="col">Alder på konkurransedagen</th><th scope="col">Danseskole/klubb</th><th scope="col">Danseskole/klubb</th><th scope="col">Freestyle singel</th><th scope="col">Slowdance singel</th><th scope="col">Påmelding Freestyle dobbel</th><th scope="col">Ferdighet dobbel</th><th scope="col">Navn på partner</th><th scope="col">Alder på eldste i paret</th>
+		</tr>
+	</thead><tbody>
+	<tr>
+		<td style="mso-number-format:0;">3425627</td><td>Sand Larsen</td><td>Nathalie</td><td>camomilla_sand@hotmail.com</td><td>48212299</td><td>Påmeldingsgebyr</td><td style="mso-number-format:0\.00;">260,00</td><td>Kredittkort</td><td>27.01.2016 19:01</td><td>27.01.2016 19:01</td><td>&nbsp;</td><td>12</td><td>Follo Dansestudio</td><td>&nbsp;</td><td>Mester</td><td>Mester</td><td>Nei</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<td style="mso-number-format:0;">3425372</td><td>Theodorsen Dahl</td><td>Amalie</td><td>anni-da@hotmail.com</td><td>98452362</td><td>Påmeldingsgebyr</td><td style="mso-number-format:0\.00;">260,00</td><td>Kredittkort</td><td>27.01.2016 16:28</td><td>27.01.2016 16:28</td><td>&nbsp;</td><td>12</td><td>Ragnes Dans</td><td>&nbsp;</td><td>Champ</td><td>Champ</td><td>Nei</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<td style="mso-number-format:0;">3425361</td><td>Røed</td><td>Malin</td><td>kroeed@tertitten.com</td><td>95207276</td><td>Påmeldingsgebyr</td><td style="mso-number-format:0\.00;">260,00</td><td>Kredittkort</td><td>27.01.2016 16:21</td><td>27.01.2016 16:21</td><td>&nbsp;</td><td>14</td><td>Focus</td><td>&nbsp;</td><td>Champ</td><td>Champ</td><td>Nei</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<td style="mso-number-format:0;">3425205</td><td>Løchen</td><td>Michelle Finsrud</td><td>linda75@hotmail.no</td><td>91362313</td><td>Påmeldingsgebyr</td><td style="mso-number-format:0\.00;">260,00</td><td>Kredittkort</td><td>27.01.2016 15:06</td><td>27.01.2016 15:06</td><td>&nbsp;</td><td>16</td><td>Follo Dansestudio</td><td>&nbsp;</td><td>Mester</td><td>Champ</td><td>Nei</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<td style="mso-number-format:0;">3425147</td><td>Røise</td><td>Andrea Justad</td><td>hilroeis@online.no</td><td>48345862</td><td>Påmeldingsgebyr</td><td style="mso-number-format:0\.00;">260,00</td><td>Kredittkort</td><td>27.01.2016 14:33</td><td>27.01.2016 14:33</td><td>&nbsp;</td><td>17</td><td>Amaze</td><td>&nbsp;</td><td>Champ</td><td>Elite</td><td>Nei</td><td>Åpen klasse (rekrutt/litt øvet)</td><td>00</td><td>2</td>
+	</tr>
+	</tbody>
+
+</table></body></html>
