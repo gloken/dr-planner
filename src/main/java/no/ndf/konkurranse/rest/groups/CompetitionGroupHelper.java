@@ -316,15 +316,13 @@ public class CompetitionGroupHelper {
     }
 
     private void applySlowDoubleMesterChampEliteAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, dancers));
-//        List<DancerDTO> dancersUnder12 = getDancersOfAge(dancers, 1, 12);
-//        List<DancerDTO> dancers12to15 = getDancersOfAge(dancers, 12, 15);
-//        List<DancerDTO> dancersOver15 = getDancersOfAge(dancers, 15, MAX_AGE);
-//
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_12, dancersUnder12));
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_15, dancers12to15));
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_15, dancersOver15));
-//
+//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, dancers));
+        List<DancerDTO> dancersUnder13 = getDancersOfAge(dancers, 1, 13);
+        List<DancerDTO> dancersOver13 = getDancersOfAge(dancers, 13, MAX_AGE);
+
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_13, dancersUnder13));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_13, dancersOver13));
+
 //        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_UNKNOWN, getDancersOfAge(dancers, -1, 0)));
     }
 

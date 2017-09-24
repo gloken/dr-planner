@@ -7,6 +7,10 @@ import org.apache.poi.ss.usermodel.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -305,7 +309,7 @@ public class FileReader {
         Dancer jenny = new Dancer();
         jenny.setFirstName("Jenny");
         jenny.setLastName("Løken");
-        jenny.setAge(14);
+        jenny.setAge(calculateAge(2002, 9, 20));
         jenny.setListedSchool("Danseloftet");
         jenny.setSingleLevel(SingleLevel.ELITE);
         jenny.setSlowLevel(SlowLevel.CHAMP);
@@ -317,6 +321,13 @@ public class FileReader {
         jenny.setTwoDanceLevel(TwoDanceLevel.DELTAR_IKKE);
         jenny.setDiscoKidEvent(DiscoKidEvent.DELTAR_IKKE);
         return jenny;
+    }
+
+    private int calculateAge(int year, int month, int day) {
+        LocalDate competitionDay = LocalDate.now().with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
+        LocalDate birthDay = LocalDate.of(year, month, day);
+
+        return Math.toIntExact(birthDay.until(competitionDay, ChronoUnit.YEARS));
     }
 
     private Dancer createDancer(Row row) {
