@@ -99,7 +99,8 @@ public class FileReader {
 
     private void handleTeamHeaders(Cell cell) {
         String heading = cell.getStringCellValue();
-        if ("Påmelding Team".equalsIgnoreCase(heading)) {
+        if ("Påmelding Team".equalsIgnoreCase(heading)
+                || "Team".equalsIgnoreCase(heading)) {
             this.registeredForTeamPosition = cell.getColumnIndex();
         } else if ("Navn på team".equalsIgnoreCase(heading)) {
             this.teamNamePosition = cell.getColumnIndex();
