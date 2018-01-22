@@ -313,7 +313,7 @@ public class FileReader {
         jenny.setAge(calculateAge(2002, 9, 20));
         jenny.setListedSchool("Danseloftet");
         jenny.setSingleLevel(SingleLevel.ELITE);
-        jenny.setSlowLevel(SlowLevel.CHAMP);
+        jenny.setSlowLevel(SlowLevel.ELITE);
         jenny.setDoubleLevel(DoubleLevel.DELTAR_IKKE);
         jenny.setSlowDoubleLevel(SlowDoubleLevel.DELTAR_IKKE);
         jenny.setTrioLevel(TrioLevel.DELTAR_IKKE);
