@@ -480,8 +480,9 @@ public class FileReader {
     }
 
     private String getUnlistedSchool(Row row) {
-        String unlistedSchool = row.getCell(schoolPosition2, CREATE_NULL_AS_BLANK).getStringCellValue();
-        return unlistedSchool;
+        return "";
+        //String unlistedSchool = row.getCell(schoolPosition2, CREATE_NULL_AS_BLANK).getStringCellValue();
+        //return unlistedSchool;
     }
 
     private SingleLevel getSingleLevel(Row row) {

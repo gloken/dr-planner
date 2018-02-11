@@ -9,7 +9,7 @@ import java.util.stream.Stream;
  */
 public enum TrioLevel {
     DELTAR_IKKE("Deltar ikke", Stream.of("Deltar ikke").collect(Collectors.toList())),
-    MESTER_CHAMP_ELITE("Mester/Champ/Elite", Stream.of("Mester/Champ/Elite", "Mester, Champ, Elite").collect(Collectors.toList()));
+    MESTER_CHAMP_ELITE("Mester/Champ/Elite", Stream.of("Mester/Champ/Elite", "Mester, Champ, Elite", "Mester/Champ/Elite m spott").collect(Collectors.toList()));
 
     private final String level;
     private final List<String> validKeys;
