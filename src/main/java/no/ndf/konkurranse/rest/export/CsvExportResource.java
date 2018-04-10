@@ -1,5 +1,7 @@
 package no.ndf.konkurranse.rest.export;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import no.ndf.konkurranse.CreateCompetitionModel;
 import no.ndf.konkurranse.rest.groups.AgeGroupDTO;
 import no.ndf.konkurranse.rest.groups.CompetitionGroupDTO;
@@ -15,18 +17,31 @@ import javax.ws.rs.core.StreamingOutput;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by gloken on 13.01.2016.
  */
 @Path("export")
 public class CsvExportResource {
+
+    private static final Logger logger = Logger.getLogger(CsvExportResource.class.getName());
+
     @Autowired
     CreateCompetitionModel createCompetitionModel;
 
     @GET
     @Path("csv")
     public Response getCsv() {
+        ObjectMapper mapper = new ObjectMapper();
+
+        logger.info("Competition: " + createCompetitionModel.getCompetitionName());
+        try {
+            logger.info(mapper.writeValueAsString(createCompetitionModel.getGroupedCompetitors()));
+        } catch (JsonProcessingException e) {
+            logger.warning("Error printing competitors: " + e.getMessage());
+        }
+
         StreamingOutput fileStream = new StreamingOutput() {
             @Override
             public void write(OutputStream outputStream) throws IOException, WebApplicationException {
