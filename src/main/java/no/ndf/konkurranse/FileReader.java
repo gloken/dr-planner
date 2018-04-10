@@ -571,7 +571,7 @@ public class FileReader {
                 slowDoubleAge = 8;
             } else if (age.equalsIgnoreCase("u/12")) {
                 slowDoubleAge = 10;
-            } else if (age.equalsIgnoreCase("Under 16")) {
+            } else if (age.equalsIgnoreCase("Over 16 år")) {
                 slowDoubleAge = 16;
             } else if (age.equalsIgnoreCase("0/18")) {
                 slowDoubleAge = 18;
