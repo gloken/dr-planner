@@ -319,7 +319,7 @@ public class FileReader {
         jenny.setTrioLevel(TrioLevel.DELTAR_IKKE);
         jenny.setHipHopLevel(HipHopLevel.DELTAR_IKKE);
         jenny.setTheWorldsLevel(TheWorldsLevel.DELTAR_IKKE);
-        jenny.setTwoDanceLevel(TwoDanceLevel.DELTAR_IKKE);
+        jenny.setTwoDanceLevel(TwoDanceLevel.CHAMP_ELITE);
         jenny.setDiscoKidEvent(DiscoKidEvent.DELTAR_IKKE);
         return jenny;
     }
