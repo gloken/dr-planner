@@ -8,24 +8,30 @@ import java.util.stream.Stream;
  * Created by gloken on 08.12.2015.
  */
 public enum SingleLevel {
-    DELTAR_IKKE("Deltar ikke", Stream.of("Deltar ikke").collect(Collectors.toList())),
-    REKRUTT("Rekrutt", Stream.of("Rekrutt").collect(Collectors.toList())),
-    LITT_OVET("Litt øvet", Stream.of("Litt øvet").collect(Collectors.toList())),
-    MESTER("Mester", Stream.of("Mester").collect(Collectors.toList())),
-    CHAMP("Champ", Stream.of("Champ").collect(Collectors.toList())),
-    ELITE("Elite", Stream.of("Elite").collect(Collectors.toList()))
+    DELTAR_IKKE("Deltar ikke", 0, Stream.of("Deltar ikke").collect(Collectors.toList())),
+    REKRUTT("Rekrutt", 1, Stream.of("Rekrutt").collect(Collectors.toList())),
+    LITT_OVET("Litt øvet", 2, Stream.of("Litt øvet").collect(Collectors.toList())),
+    MESTER("Mester", 3, Stream.of("Mester").collect(Collectors.toList())),
+    CHAMP("Champ", 4, Stream.of("Champ").collect(Collectors.toList())),
+    ELITE("Elite", 5, Stream.of("Elite").collect(Collectors.toList()))
     ;
 
     private final String level;
+    private int rating;
     private final List<String> validKeys;
 
-    SingleLevel(String level, List<String> validKeys) {
+    SingleLevel(String level, int rating, List<String> validKeys) {
         this.level = level;
+        this.rating = rating;
         this.validKeys = validKeys;
     }
 
     public String getLevel() {
         return level;
+    }
+
+    public int getRating() {
+        return rating;
     }
 
     public List<String> getValidKeys() {

@@ -13,6 +13,7 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -303,7 +304,61 @@ public class FileReader {
             isHeaderRow = false;
         }
 
+        fixDoubleClasses(dancers);
+
         return dancers;
+    }
+
+    private void fixDoubleClasses(List<Dancer> dancers) {
+        for (Dancer dancer : dancers) {
+            if (DoubleLevel.UNKNOWN.equals(dancer.getDoubleLevel())) {
+                findDoubleLevel(dancer, dancers);
+            }
+        }
+    }
+
+    private void findDoubleLevel(Dancer dancer, List<Dancer> dancers) {
+        SingleLevel dancerSingleLevel = dancer.getSingleLevel();
+        String partnerName = dancer.getDoublePartner();
+
+        Optional<Dancer> doublePartner = dancers.stream()
+                .filter(partner -> partnerName.equalsIgnoreCase(partner.getFirstName() + " " + partner.getLastName()))
+                .findFirst();
+
+        if (doublePartner.isPresent()) {
+            SingleLevel highestSingleLevel = findHighestSingleLevel(dancerSingleLevel, doublePartner.get().getSingleLevel());
+            dancer.setDoubleLevel(getDoubleLevelFromSingleLevel(highestSingleLevel));
+
+            logger.info(dancer.getFirstName() + " " + dancer.getLastName() + ", " + dancer.getSingleLevel().getLevel()
+                    + " og " + partnerName + ", " + doublePartner.get().getSingleLevel().getLevel()
+                    + " settes til dobbelnivå " + dancer.getDoubleLevel().getLevel());
+        } else if (!SingleLevel.DELTAR_IKKE.equals(dancerSingleLevel)) {
+            logger.info("Fant ingen dobbel-partner for " + dancer.getFirstName() + " " + dancer.getLastName() + " i ferdighetsklasse " + dancerSingleLevel.getLevel());
+            dancer.setDoubleLevel(getDoubleLevelFromSingleLevel(dancerSingleLevel));
+        } else {
+            logger.warning("Kunne ikke sette dobbelnivå for "
+                    + dancer.getFirstName() + " " + dancer.getLastName() + ", " + dancer.getSingleLevel().getLevel()
+                    + " og " + partnerName + ". Dobbelpartner ikke funnet.");
+        }
+    }
+
+    private DoubleLevel getDoubleLevelFromSingleLevel(SingleLevel singleLevel) {
+        if (singleLevel.equals(SingleLevel.REKRUTT) || singleLevel.equals(SingleLevel.LITT_OVET)) {
+            return DoubleLevel.OPEN;
+        } else if (singleLevel.equals(SingleLevel.MESTER)) {
+            return DoubleLevel.MESTER;
+        } else if (singleLevel.equals(SingleLevel.CHAMP) || singleLevel.equals(SingleLevel.ELITE)) {
+            return DoubleLevel.CHAMP_ELITE;
+        }
+
+        return DoubleLevel.UNKNOWN;
+    }
+
+    private SingleLevel findHighestSingleLevel(SingleLevel dancerSingleLevel, SingleLevel singleLevel) {
+        if (dancerSingleLevel.getRating() > singleLevel.getRating()) {
+            return dancerSingleLevel;
+        }
+        return singleLevel;
     }
 
     private Dancer createJenny() {
