@@ -300,13 +300,13 @@ public class CompetitionGroupHelper {
     }
 
     private void applyHipHopBeginnerAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, getDancersOfAge(dancers, 0, MAX_AGE)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_10, getDancersOfAge(dancers, 10, MAX_AGE)));
     }
 
     private void applyHipHopIntermediateAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-        List<DancerDTO> allDancers = getDancersOfAge(dancers, 1, MAX_AGE);
-
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, allDancers));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_10, getDancersOfAge(dancers, 10, MAX_AGE)));
     }
 
     private void applySlowDoubleOpenAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
@@ -547,8 +547,9 @@ public class CompetitionGroupHelper {
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_12, getDancersOfAge(dancers, 10, 12)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_14, getDancersOfAge(dancers, 12, 14)));
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_14, getDancersOfAge(dancers, 14, MAX_AGE)));
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_16, getDancersOfAge(dancers, 16, MAX_AGE)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_14_16, getDancersOfAge(dancers, 14, 16)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_16_18, getDancersOfAge(dancers, 16, 18)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_18, getDancersOfAge(dancers, 18, MAX_AGE)));
     }
 
     private void applyFunCoupleAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
