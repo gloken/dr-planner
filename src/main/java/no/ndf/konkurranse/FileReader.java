@@ -305,8 +305,33 @@ public class FileReader {
         }
 
         fixDoubleClasses(dancers);
+        fixSlowDoubleAge(dancers);
 
         return dancers;
+    }
+
+    private void fixSlowDoubleAge(List<Dancer> dancers) {
+        for (Dancer dancer : dancers) {
+            if (!SlowDoubleLevel.DELTAR_IKKE.equals(dancer.getSlowDoubleLevel()) && dancer.getSlowDoubleAge() == -1) {
+                findSlowDoubleAge(dancer, dancers);
+            }
+        }
+    }
+
+    private void findSlowDoubleAge(Dancer dancer, List<Dancer> dancers) {
+        int dancerAge = dancer.getAge();
+        int partnerAge = -1;
+
+        Optional<Dancer> partner = findPartner(dancers, dancer.getSlowDoublePartner());
+        if (partner.isPresent()) {
+            partnerAge = partner.get().getAge();
+        } else {
+            logger.warning(dancer.getFirstName() + " " + dancer.getLastName() + " - " + dancer.getAge()
+                    + " Setter slow double alder uten å vite partners alder (" + dancer.getSlowDoublePartner() + ")");
+        }
+
+        int slowDoubleAge = dancerAge > partnerAge ? dancerAge : partnerAge;
+        dancer.setSlowDoubleAge(slowDoubleAge);
     }
 
     private void fixDoubleClasses(List<Dancer> dancers) {
@@ -321,9 +346,7 @@ public class FileReader {
         SingleLevel dancerSingleLevel = dancer.getSingleLevel();
         String partnerName = dancer.getDoublePartner();
 
-        Optional<Dancer> doublePartner = dancers.stream()
-                .filter(partner -> partnerName.equalsIgnoreCase(partner.getFirstName() + " " + partner.getLastName()))
-                .findFirst();
+        Optional<Dancer> doublePartner = findPartner(dancers, partnerName);
 
         if (doublePartner.isPresent()) {
             SingleLevel highestSingleLevel = findHighestSingleLevel(dancerSingleLevel, doublePartner.get().getSingleLevel());
@@ -340,6 +363,12 @@ public class FileReader {
                     + dancer.getFirstName() + " " + dancer.getLastName() + ", " + dancer.getSingleLevel().getLevel()
                     + " og " + partnerName + ". Dobbelpartner ikke funnet.");
         }
+    }
+
+    private Optional<Dancer> findPartner(List<Dancer> dancers, String partnerName) {
+        return dancers.stream()
+                    .filter(partner -> partnerName.equalsIgnoreCase(partner.getFirstName() + " " + partner.getLastName()))
+                    .findFirst();
     }
 
     private DoubleLevel getDoubleLevelFromSingleLevel(SingleLevel singleLevel) {
