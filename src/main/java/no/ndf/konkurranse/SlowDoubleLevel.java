@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public enum SlowDoubleLevel {
     DELTAR_IKKE("Deltar ikke", Stream.of("Deltar ikke").collect(Collectors.toList())),
     AAPEN("Åpen klasse (rekrutt/litt øvet)", Stream.of("Åpen klasse (rekrutt/litt øvet)", "Åpen klasse (rekrutt+litt øvet)").collect(Collectors.toList())),
-    MESTER_CHAMP_ELITE("Mester/Champ/Elite", Stream.of("Mester/Champ/Elite", "Mester", "Champ/Elite", "Mester/Champ/Elite (spott)").collect(Collectors.toList())),
+    MESTER_CHAMP_ELITE("Mester/Champ/Elite", Stream.of("Mester/Champ/Elite", "Mester", "Champ/Elite", "Mester/Champ/Elite (spott)", "Mester/Champ/Elite m spott").collect(Collectors.toList())),
     ;
 
     private final String level;
