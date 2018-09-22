@@ -29,3 +29,5 @@ hs_err_pid*
 .idea/
 webapps/
 target/
+node_modules/
+dist/
