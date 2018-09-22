@@ -175,7 +175,7 @@
 
 
     </dependencies>
-    
+
     <build>
         <finalName>dr-planner</finalName>
         <plugins>
@@ -187,13 +187,12 @@
                 </configuration>
             </plugin>
 
+            <!-- >
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.3.2</version>
                 <executions>
-                    <!-- Required: The following will ensure `npm install` is called
-                         before anything else during the 'Default Lifecycle' -->
                     <execution>
                         <id>npm install (initialize)</id>
                         <goals>
@@ -207,8 +206,6 @@
                             </arguments>
                         </configuration>
                     </execution>
-                    <!-- Required: The following will ensure `npm install` is called
-                         before anything else during the 'Clean Lifecycle' -->
                     <execution>
                         <id>npm install (clean)</id>
                         <goals>
@@ -223,9 +220,6 @@
                         </configuration>
                     </execution>
 
-                    <!-- Required: This following calls `npm run build` where 'build' is
-                         the script name I used in my project, change this if yours is
-                             different -->
                     <execution>
                         <id>npm run start (compile)</id>
                         <goals>
@@ -240,19 +234,9 @@
                             </arguments>
                         </configuration>
                     </execution>
-
                 </executions>
-
-                <!--<configuration>-->
-                    <!--<environmentVariables>-->
-                        <!--<CI>true</CI>-->
-                        <!--&lt;!&ndash; The following parameters create an NPM sandbox for CI &ndash;&gt;-->
-                        <!--<NPM_CONFIG_PREFIX>${basedir}/npm</NPM_CONFIG_PREFIX>-->
-                        <!--<NPM_CONFIG_CACHE>${NPM_CONFIG_PREFIX}/cache</NPM_CONFIG_CACHE>-->
-                        <!--<NPM_CONFIG_TMP>${project.build.directory}/npmtmp</NPM_CONFIG_TMP>-->
-                    <!--</environmentVariables>-->
-                <!--</configuration>-->
             </plugin>
+            <-->
         </plugins>
     </build>
 </project>
