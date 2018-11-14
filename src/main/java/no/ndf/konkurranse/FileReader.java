@@ -292,9 +292,10 @@ public class FileReader {
 
         Sheet sheet = workbook.getSheetAt(0);
         boolean isHeaderRow = true;
+        Long id = 0L;
         for (Row row : sheet) {
             if (!isHeaderRow) {
-                Dancer dancer = createDancer(row);
+                Dancer dancer = createDancer(row, id++);
                 if (dancer == null) {
                     System.out.println("Could not create dancer" + row.getRowNum());
                     logger.log(Level.FINE, "Could not create dancer", row.getRowNum());
@@ -392,6 +393,8 @@ public class FileReader {
 
     private Dancer createJenny() {
         Dancer jenny = new Dancer();
+        jenny.setOrderId(9999L);
+        jenny.setEmail("lklklklkl");
         jenny.setFirstName("Jenny");
         jenny.setLastName("Løken");
         jenny.setAge(calculateAge(2002, 9, 20));
@@ -415,13 +418,13 @@ public class FileReader {
         return Math.toIntExact(birthDay.until(competitionDay, ChronoUnit.YEARS));
     }
 
-    private Dancer createDancer(Row row) {
+    private Dancer createDancer(Row row, Long id) {
         Dancer dancer = new Dancer();
-        Long orderId = getOrderId(row);
-        dancer.setOrderId(orderId);
+//        Long orderId = getOrderId(row);
+        dancer.setOrderId(id);
         dancer.setLastName(getLastName(row));
         dancer.setFirstName(getFirstName(row));
-        dancer.setEmail(getEmail(row));
+        dancer.setEmail("fgfhfg");
         dancer.setAge(getAge(row));
         dancer.setListedSchool(getListedSchool(row));
         dancer.setUnlistedSchool(getUnlistedSchool(row));
