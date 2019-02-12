@@ -16,13 +16,13 @@ public class ApplicationConfig {
     @Bean
     DataSource dataSource() {
         DataSource dataSource = null;
-        JndiTemplate jndi = new JndiTemplate();
-
-        try {
-            dataSource = (DataSource) jndi.lookup("java:comp/env/jdbc/MySQLDS");
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
+//        JndiTemplate jndi = new JndiTemplate();
+//
+//        try {
+//            dataSource = (DataSource) jndi.lookup("java:comp/env/jdbc/MySQLDS");
+//        } catch (NamingException e) {
+//            e.printStackTrace();
+//        }
         return dataSource;
     }
 }

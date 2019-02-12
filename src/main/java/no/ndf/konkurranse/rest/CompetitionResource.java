@@ -1,7 +1,6 @@
 package no.ndf.konkurranse.rest;
 
 import no.ndf.konkurranse.CreateCompetitionModel;
-import no.ndf.konkurranse.dao.CompetitionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.Consumes;
@@ -20,15 +19,11 @@ public class CompetitionResource {
     @Autowired
     CreateCompetitionModel createCompetitionModel;
 
-    @Autowired
-    CompetitionDao competitionDao;
-
     @POST
     @Path("create")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createCompetition(Competition competition) {
-        //competitionDao.createCompetition(competition.getName());
         createCompetitionModel.setCompetitionName(competition.getName());
         return Response.ok().build();
     }

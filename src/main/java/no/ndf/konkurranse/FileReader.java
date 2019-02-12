@@ -63,6 +63,8 @@ public class FileReader {
     private int theWorldsLevelPosition = -1;
     private int registeredForTeamPosition = -1;
     private int teamNamePosition = -1;
+    private int latinoSambaPosition = -1;
+    private int latinoChaChaChaPosition = -1;
 
     private static final Logger logger = Logger.getLogger(FileReader.class.getName());
 
@@ -96,6 +98,16 @@ public class FileReader {
         handleFunCouplesHeaders(cell);
         handleTheWorldsHeaders(cell);
         handleTeamHeaders(cell);
+        handleLatinoHeaders(cell);
+    }
+
+    private void handleLatinoHeaders(Cell cell) {
+        String heading = cell.getStringCellValue();
+        if ("Latino solo Samba".equalsIgnoreCase(heading)) {
+            this.latinoSambaPosition = cell.getColumnIndex();
+        } else if ("Latino solo Cha cha cha".equalsIgnoreCase(heading)) {
+            this.latinoChaChaChaPosition = cell.getColumnIndex();
+        }
     }
 
     private void handleTeamHeaders(Cell cell) {
@@ -399,15 +411,15 @@ public class FileReader {
         jenny.setLastName("Løken");
         jenny.setAge(calculateAge(2002, 9, 20));
         jenny.setListedSchool("Danseloftet");
-        jenny.setSingleLevel(SingleLevel.ELITE);
+        jenny.setSingleLevel(SingleLevel.DELTAR_IKKE);
         jenny.setSlowLevel(SlowLevel.ELITE);
         jenny.setDoubleLevel(DoubleLevel.DELTAR_IKKE);
         jenny.setSlowDoubleLevel(SlowDoubleLevel.DELTAR_IKKE);
         jenny.setTrioLevel(TrioLevel.DELTAR_IKKE);
         jenny.setHipHopLevel(HipHopLevel.DELTAR_IKKE);
-        jenny.setTheWorldsLevel(TheWorldsLevel.DELTAR_IKKE);
         jenny.setTwoDanceLevel(TwoDanceLevel.DELTAR_IKKE);
         jenny.setDiscoKidEvent(DiscoKidEvent.DELTAR_IKKE);
+        jenny.setTheWorldsLevel(TheWorldsLevel.ELITE);
         return jenny;
     }
 
@@ -471,6 +483,11 @@ public class FileReader {
             dancer.setTeamName(getTeamName(row));
         }
 
+        dancer.setRegisteredForLatinoSamba(isRegisteredForLatinoSamba(row));
+        dancer.setRegisteredForLatinoChaChaCha(isRegisteredForLatinoChaChaCha(row));
+
+
+
 //        System.out.println("Created dancer " + dancer.toString());
         return dancer;
     }
@@ -483,6 +500,22 @@ public class FileReader {
     private boolean isRegisteredForTeam(Row row) {
         if (registeredForTeamPosition != -1) {
             String value = row.getCell(registeredForTeamPosition, CREATE_NULL_AS_BLANK).getStringCellValue();
+            return "ja".equalsIgnoreCase(value);
+        }
+        return false;
+    }
+
+    private boolean isRegisteredForLatinoSamba(Row row) {
+        if (latinoSambaPosition != -1) {
+            String value = row.getCell(latinoSambaPosition, CREATE_NULL_AS_BLANK).getStringCellValue();
+            return "ja".equalsIgnoreCase(value);
+        }
+        return false;
+    }
+
+    private boolean isRegisteredForLatinoChaChaCha(Row row) {
+        if (latinoChaChaChaPosition != -1) {
+            String value = row.getCell(latinoChaChaChaPosition, CREATE_NULL_AS_BLANK).getStringCellValue();
             return "ja".equalsIgnoreCase(value);
         }
         return false;

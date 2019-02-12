@@ -38,6 +38,8 @@ public class Dancer {
     private TheWorldsLevel theWorldsLevel;
     private boolean registeredForTeam;
     private String teamName;
+    private boolean registeredForLatinoSamba;
+    private boolean registeredForLatinoChaChaCha;
 
     public Dancer() {
     }
@@ -278,5 +280,21 @@ public class Dancer {
 
     public String getTeamName() {
         return teamName;
+    }
+
+    public void setRegisteredForLatinoSamba(boolean registeredForLatinoSamba) {
+        this.registeredForLatinoSamba = registeredForLatinoSamba;
+    }
+
+    public boolean getRegisteredForLatinoSamba() {
+        return registeredForLatinoSamba;
+    }
+
+    public void setRegisteredForLatinoChaChaCha(boolean registeredForLatinoChaChaCha) {
+        this.registeredForLatinoChaChaCha = registeredForLatinoChaChaCha;
+    }
+
+    public boolean getRegisteredForLatinoChaChaCha() {
+        return registeredForLatinoChaChaCha;
     }
 }

@@ -67,6 +67,9 @@ public class GroupAdminResource {
 
         competitionGroups.add(competitionGroupHelper.getTeams());
 
+        competitionGroups.add(competitionGroupHelper.getLationSamba());
+        competitionGroups.add(competitionGroupHelper.getLationChaChaCha());
+
         createCompetitionModel.setGroupedCompetitors(competitionGroups);
 
         return competitionGroups;

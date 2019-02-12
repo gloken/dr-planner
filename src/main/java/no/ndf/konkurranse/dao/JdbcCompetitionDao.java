@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by gloken on 20.12.2015.
  */
-@Repository
+//@Repository
 public class JdbcCompetitionDao implements CompetitionDao {
 
     private JdbcTemplate jdbcTemplate;
