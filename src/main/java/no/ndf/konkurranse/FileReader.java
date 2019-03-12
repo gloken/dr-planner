@@ -411,15 +411,17 @@ public class FileReader {
         jenny.setLastName("Løken");
         jenny.setAge(calculateAge(2002, 9, 20));
         jenny.setListedSchool("Danseloftet");
-        jenny.setSingleLevel(SingleLevel.DELTAR_IKKE);
+        jenny.setSingleLevel(SingleLevel.ELITE);
         jenny.setSlowLevel(SlowLevel.ELITE);
         jenny.setDoubleLevel(DoubleLevel.DELTAR_IKKE);
-        jenny.setSlowDoubleLevel(SlowDoubleLevel.DELTAR_IKKE);
+        jenny.setSlowDoubleLevel(SlowDoubleLevel.MESTER_CHAMP_ELITE);
+        jenny.setSlowDoubleAge(16);
+        jenny.setSlowDoublePartner("Julie Lunde");
         jenny.setTrioLevel(TrioLevel.DELTAR_IKKE);
         jenny.setHipHopLevel(HipHopLevel.DELTAR_IKKE);
         jenny.setTwoDanceLevel(TwoDanceLevel.DELTAR_IKKE);
         jenny.setDiscoKidEvent(DiscoKidEvent.DELTAR_IKKE);
-        jenny.setTheWorldsLevel(TheWorldsLevel.ELITE);
+        jenny.setTheWorldsLevel(TheWorldsLevel.DELTAR_IKKE);
         return jenny;
     }
 
