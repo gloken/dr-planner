@@ -66,7 +66,7 @@ public class DancerDTOMapper {
     public static DancerDTO mapToTeamDTO(Dancer dancer) {
         DancerDTO dto = new DancerDTO();
         dto.setName(dancer.getTeamName());
-        dto.setAge(-1);
+        dto.setAge(dancer.getAge());
         dto.setSchool(dancer.getListedSchool());
         return dto;
     }

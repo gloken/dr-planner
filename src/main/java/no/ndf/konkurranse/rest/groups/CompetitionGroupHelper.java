@@ -25,8 +25,12 @@ public class CompetitionGroupHelper {
     public static final String DESC_U_12 = "u/12 År";
     public static final String DESC_U_13 = "u/13 År";
     public static final String DESC_U_14 = "u/14 År";
+    private static final String DESC_U_15 = "u/15 År";
     private static final String DESC_U_17 = "u/17 År";
+    private static final String DESC_U_25 = "u/25 År";
     public static final String DESC_6_8 = "6-8 År";
+    private static final String DESC_8 = "8 År";
+    private static final String DESC_9 = "9 År";
     public static final String DESC_8_10 = "8-10 År";
     public static final String DESC_10_12 = "10-12 År";
     public static final String DESC_10_13 = "10-13 År";
@@ -34,6 +38,8 @@ public class CompetitionGroupHelper {
     public static final String DESC_12_14 = "12-14 År";
     public static final String DESC_12_15 = "12-15 År";
     public static final String DESC_12_16 = "12-16 År";
+    public static final String DESC_13_15 = "13-15 År";
+    private static final String DESC_13_16 = "13-16 År";
     public static final String DESC_14_16 = "14-16 År";
     public static final String DESC_16_18 = "16-18 År";
     public static final String DESC_O_10 = "o/10 År";
@@ -45,6 +51,7 @@ public class CompetitionGroupHelper {
     public static final String DESC_O_16 = "o/16 År";
     public static final String DESC_O_17 = "o/17 År";
     public static final String DESC_O_18 = "o/18 År";
+    private static final String DESC_O_25 = "o/25 År";
     public static final String DESC_UNKNOWN = "Alder ikke oppgitt";
     public static final String DESC_ALL = "Alle";
     public static final String DESC_BARN = "Barn";
@@ -338,8 +345,7 @@ public class CompetitionGroupHelper {
     }
 
     private void applyHipHopBeginnerAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_10, getDancersOfAge(dancers, 10, MAX_AGE)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, getDancersOfAge(dancers, 0, MAX_AGE)));
     }
 
     private void applyHipHopIntermediateAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
@@ -354,173 +360,70 @@ public class CompetitionGroupHelper {
     }
 
     private void applySlowDoubleMesterChampEliteAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_11, getDancersOfAge(dancers, 0, 11)));
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_11, getDancersOfAge(dancers, 11, MAX_AGE)));
-    }
-
-    private void applyDoubleMesterAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-        List<DancerDTO> dancersUnder10 = getDancersOfAge(dancers, 0, 10);
-        List<DancerDTO> dancersOver10 = getDancersOfAge(dancers, 10, MAX_AGE);
-
-        // if (dancersUnder10.size() > MINIMUM_NUMBER_IN_GROUP && dancersOver10.size() > MINIMUM_NUMBER_IN_GROUP) {
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, dancersUnder10));
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_10, dancersOver10));
-        // } else {
-        //    List<DancerDTO> allDancers = Stream.concat(dancersUnder10.stream(), dancersOver10.stream())
-        //            .collect(Collectors.toList());
-        //    competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, allDancers));
-        //}
-    }
-
-    private void applyDoubleChampEliteAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_14, getDancersOfAge(dancers, 0, 14)));
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_14, getDancersOfAge(dancers, 14, MAX_AGE)));
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, dancers));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_12, getDancersOfAge(dancers, 0, 12)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_15, getDancersOfAge(dancers, 12, 15)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_15, getDancersOfAge(dancers, 15, MAX_AGE)));
     }
 
     private void applyDoubleOpenAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_12, getDancersOfAge(dancers, 0, 12)));
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_12, getDancersOfAge(dancers, 12, MAX_AGE)));
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, getDancersOfAge(dancers, 0, MAX_AGE)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_11, getDancersOfAge(dancers, 0, 11)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_11, getDancersOfAge(dancers, 11, MAX_AGE)));
+//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, getDancersOfAge(dancers, 0, MAX_AGE)));
+    }
 
+    private void applyDoubleMesterAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, getDancersOfAge(dancers,0, MAX_AGE)));
+    }
+
+    private void applyDoubleChampEliteAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_15, getDancersOfAge(dancers, 0, 15)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_15, getDancersOfAge(dancers, 15, MAX_AGE)));
+//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, dancers));
     }
 
     private void applySlowOpenAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-        List<DancerDTO> dancersUnder6 = getDancersOfAge(dancers, 0, 6);
-        List<DancerDTO> dancers6to8 = getDancersOfAge(dancers, 6, 8);
-
-        if (dancersUnder6.size() <= 6 || dancers6to8.size() <= MINIMUM_NUMBER_IN_GROUP) {
-            List<DancerDTO> dancersUnder8 = Stream.concat(dancersUnder6.stream(), dancers6to8.stream())
-                    .collect(Collectors.toList());
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_8, dancersUnder8));
-        } else {
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_6, dancersUnder6));
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_6_8, dancers6to8));
-        }
-
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_8_10, getDancersOfAge(dancers, 8, 10)));
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_10, getDancersOfAge(dancers, 10, MAX_AGE)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_8, getDancersOfAge(dancers, 0, 8)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_8, getDancersOfAge(dancers, 8, 9)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_9, getDancersOfAge(dancers, 9, 10)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_12, getDancersOfAge(dancers, 10, 12)));
-
-        // TODO Muligens slå sammen om det er færre enn 5 i 12-14 også
-//        if (getDancersOfAge(dancers, 14, MAX_AGE).size() > MINIMUM_NUMBER_IN_GROUP) {
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_14, getDancersOfAge(dancers, 12, 14)));
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_14, getDancersOfAge(dancers, 14, MAX_AGE)));
-//        } else {
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_12, getDancersOfAge(dancers, 12, MAX_AGE)));
-//        }
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_12, getDancersOfAge(dancers, 12, MAX_AGE)));
     }
 
     private void applyRekrutteringAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-        List<DancerDTO> dancersUnder6 = getDancersOfAge(dancers, 0, 6);
-        List<DancerDTO> dancers6to8 = getDancersOfAge(dancers, 6, 8);
-
-//        if (dancersUnder6.size() < 2 || dancers6to8.size() < MINIMUM_NUMBER_IN_GROUP) {
-//            List<DancerDTO> dancersUnder8 = Stream.concat(dancersUnder6.stream(), dancers6to8.stream())
-//                    .collect(Collectors.toList());
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_8, dancersUnder8));
-//        } else {
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_6, dancersUnder6));
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_6_8, dancers6to8));
-//        }
-
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_6, getDancersOfAge(dancers, 0, 6)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_6_8, getDancersOfAge(dancers, 6, 8)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_8_10, getDancersOfAge(dancers, 8, 10)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_12, getDancersOfAge(dancers, 10, 12)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_12, getDancersOfAge(dancers, 12, MAX_AGE)));
-
-//        // TODO Muligens slå sammen om det er færre enn 5 i 12-14 også
-//        if (getDancersOfAge(dancers, 14, MAX_AGE).size() > MINIMUM_NUMBER_IN_GROUP) {
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_14, getDancersOfAge(dancers, 12, 14)));
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_14, getDancersOfAge(dancers, 14, MAX_AGE)));
-//        } else {
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_12, getDancersOfAge(dancers, 12, MAX_AGE)));
-//        }
     }
 
     private void applyLittOvetAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-        List<DancerDTO> dancersUnder8 = getDancersOfAge(dancers, 0, 8);
-        List<DancerDTO> dancers8to10 = getDancersOfAge(dancers, 8, 10);
-        if (dancersUnder8.size() >= MINIMUM_NUMBER_IN_GROUP && dancers8to10.size() >= MINIMUM_NUMBER_IN_GROUP) {
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_8, dancersUnder8));
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_8_10, dancers8to10));
-        } else {
-            List<DancerDTO> dancersUnder10 = Stream.concat(dancersUnder8.stream(), dancers8to10.stream())
-                    .collect(Collectors.toList());
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, dancersUnder10));
-        }
-
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_8, getDancersOfAge(dancers, 0, 8)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_8_10, getDancersOfAge(dancers, 8, 10)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_12, getDancersOfAge(dancers, 10, 12)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_12, getDancersOfAge(dancers, 12, MAX_AGE)));
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_14, getDancersOfAge(dancers, 12, 14)));
-//
-//        List<DancerDTO> dancers14to16 = getDancersOfAge(dancers, 14, 16);
-//        List<DancerDTO> dancersOver16 = getDancersOfAge(dancers, 16, MAX_AGE);
-//        if (dancers14to16.size() > MINIMUM_NUMBER_IN_GROUP && dancersOver16.size() > MINIMUM_NUMBER_IN_GROUP) {
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_14_16, dancers14to16));
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_16, dancersOver16));
-//        } else {
-//            List<DancerDTO> dancersOver14 = Stream.concat(dancers14to16.stream(), dancersOver16.stream())
-//                    .collect(Collectors.toList());
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_14, dancersOver14));
-//        }
     }
 
     private void applyMesterAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_12, getDancersOfAge(dancers, 10, 12)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_14, getDancersOfAge(dancers, 12, 14)));
-
-        List<DancerDTO> dancers14to16 = getDancersOfAge(dancers, 14, 16);
-        List<DancerDTO> dancersOver16 = getDancersOfAge(dancers, 16, MAX_AGE);
-
-//        if (dancers14to16.size() > MINIMUM_NUMBER_IN_GROUP && dancersOver16.size() > MINIMUM_NUMBER_IN_GROUP) {
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_14_16, dancers14to16));
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_16, dancersOver16));
-//        } else {
-            List<DancerDTO> dancersOver14 = Stream.concat(dancers14to16.stream(), dancersOver16.stream())
-                    .collect(Collectors.toList());
-            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_14, dancersOver14));
-//        }
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_14, getDancersOfAge(dancers, 14, MAX_AGE)));
     }
 
     private void applyChampAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_12, getDancersOfAge(dancers, 10, 12)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_14, getDancersOfAge(dancers, 12, 14)));
-
-        List<DancerDTO> dancers14to16 = getDancersOfAge(dancers, 14, 16);
-        List<DancerDTO> dancersOver16 = getDancersOfAge(dancers, 16, MAX_AGE);
-
-//        if (dancers14to16.size() > MINIMUM_NUMBER_IN_GROUP && dancersOver16.size() > MINIMUM_NUMBER_IN_GROUP) {
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_14_16, dancers14to16));
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_16, dancersOver16));
-//        } else {
-//            List<DancerDTO> dancersOver14 = Stream.concat(dancers14to16.stream(), dancersOver16.stream())
-//                    .collect(Collectors.toList());
-//            competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_14, dancersOver14));
-//        }
-    }
-
-    private void applySlowChampAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_12, getDancersOfAge(dancers, 10, 12)));
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_14, getDancersOfAge(dancers, 12, 14)));
-
-        List<DancerDTO> dancers14to16 = getDancersOfAge(dancers, 14, 16);
-        List<DancerDTO> dancersOver16 = getDancersOfAge(dancers, 16, MAX_AGE);
-
-//        if (dancers14to16.size() > MINIMUM_NUMBER_IN_GROUP && dancersOver16.size() > MINIMUM_NUMBER_IN_GROUP) {
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_14_16, dancers14to16));
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_16, dancersOver16));
-//        } else {
-//        List<DancerDTO> dancersOver14 = Stream.concat(dancers14to16.stream(), dancersOver16.stream())
-//                .collect(Collectors.toList());
-//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_14, dancersOver14));
-//        }
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_14_16, getDancersOfAge(dancers, 14, 16)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_16, getDancersOfAge(dancers, 16, MAX_AGE)));
     }
 
     private void applySlowMesterAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
+        // FOLLO
+//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
+//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_13, getDancersOfAge(dancers, 10, 13)));
+//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_13, getDancersOfAge(dancers, 13, MAX_AGE)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_12, getDancersOfAge(dancers, 10, 12)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_14, getDancersOfAge(dancers, 12, 14)));
@@ -544,7 +447,29 @@ public class CompetitionGroupHelper {
         }
     }
 
+    private void applySlowChampAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
+        // FOLLO
+//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
+//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_13, getDancersOfAge(dancers, 10, 13)));
+//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_13_15, getDancersOfAge(dancers, 13, 15)));
+//        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_15, getDancersOfAge(dancers, 15, MAX_AGE)));
+
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_10, getDancersOfAge(dancers, 0, 10)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_12, getDancersOfAge(dancers, 10, 12)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_14, getDancersOfAge(dancers, 12, 14)));
+
+        List<DancerDTO> dancers14to16 = getDancersOfAge(dancers, 14, 16);
+        List<DancerDTO> dancersOver16 = getDancersOfAge(dancers, 16, MAX_AGE);
+
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_14_16, dancers14to16));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_16, dancersOver16));
+    }
+
     private void applyEliteAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
+        //FOLLO
+        //competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_13, getDancersOfAge(dancers, 0, 13)));
+        //competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_13_16, getDancersOfAge(dancers, 13, 16)));
+        //competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_16, getDancersOfAge(dancers, 16, MAX_AGE)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_10_12, getDancersOfAge(dancers, 10, 12)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_12_14, getDancersOfAge(dancers, 12, 14)));
         competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_14_16, getDancersOfAge(dancers, 14, 16)));
@@ -598,7 +523,8 @@ public class CompetitionGroupHelper {
     }
 
     private void applyTeamAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {
-        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_ALL, dancers));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_U_25, getDancersOfAge(dancers, 0, 25)));
+        competitionGroupDTO.addAgeGroup(new AgeGroupDTO(DESC_O_25, getDancersOfAge(dancers, 25, MAX_AGE)));
     }
 
     private void applyTheWorldsOpenAgeGroups(CompetitionGroupDTO competitionGroupDTO, List<DancerDTO> dancers) {

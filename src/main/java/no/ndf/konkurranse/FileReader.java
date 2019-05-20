@@ -65,6 +65,7 @@ public class FileReader {
     private int teamNamePosition = -1;
     private int latinoSambaPosition = -1;
     private int latinoChaChaChaPosition = -1;
+    private int latinoPosition = -1;
 
     private static final Logger logger = Logger.getLogger(FileReader.class.getName());
 
@@ -103,6 +104,9 @@ public class FileReader {
 
     private void handleLatinoHeaders(Cell cell) {
         String heading = cell.getStringCellValue();
+        if ("Latino Solo".equalsIgnoreCase(heading)) {
+            this.latinoPosition = cell.getColumnIndex();
+        }
         if ("Latino solo Samba".equalsIgnoreCase(heading)) {
             this.latinoSambaPosition = cell.getColumnIndex();
         } else if ("Latino solo Cha cha cha".equalsIgnoreCase(heading)) {
@@ -132,9 +136,9 @@ public class FileReader {
 
         if (heading.equalsIgnoreCase("OrderID")) {
             this.orderIdPosition = cell.getColumnIndex();
-        } else if (heading.equalsIgnoreCase("Etternavn")) {
+        } else if (heading.equalsIgnoreCase("Etternavn") || heading.equalsIgnoreCase("Danserens etternavn")) {
             this.lastNamePosition = cell.getColumnIndex();
-        } else if (heading.equalsIgnoreCase("Fornavn")) {
+        } else if (heading.equalsIgnoreCase("Fornavn") || heading.equalsIgnoreCase("Danserens fornavn")) {
             this.firstNamePosition = cell.getColumnIndex();
         } else if (heading.equalsIgnoreCase("E-post adresse")) {
             this.emailPosition = cell.getColumnIndex();
@@ -413,14 +417,16 @@ public class FileReader {
         jenny.setListedSchool("Danseloftet");
         jenny.setSingleLevel(SingleLevel.ELITE);
         jenny.setSlowLevel(SlowLevel.ELITE);
-        jenny.setDoubleLevel(DoubleLevel.DELTAR_IKKE);
+        jenny.setDoubleLevel(DoubleLevel.CHAMP_ELITE);
+        jenny.setDoubleAge(16);
+        jenny.setDoublePartner("Julie Lunde");
         jenny.setSlowDoubleLevel(SlowDoubleLevel.MESTER_CHAMP_ELITE);
         jenny.setSlowDoubleAge(16);
         jenny.setSlowDoublePartner("Julie Lunde");
         jenny.setTrioLevel(TrioLevel.DELTAR_IKKE);
         jenny.setHipHopLevel(HipHopLevel.DELTAR_IKKE);
-        jenny.setTwoDanceLevel(TwoDanceLevel.DELTAR_IKKE);
-        jenny.setDiscoKidEvent(DiscoKidEvent.DELTAR_IKKE);
+        jenny.setTwoDanceLevel(TwoDanceLevel.CHAMP_ELITE);
+        jenny.setDiscoKidEvent(DiscoKidEvent.SINGLE_AND_SLOW);
         jenny.setTheWorldsLevel(TheWorldsLevel.DELTAR_IKKE);
         return jenny;
     }
@@ -508,6 +514,10 @@ public class FileReader {
     }
 
     private boolean isRegisteredForLatinoSamba(Row row) {
+        if (latinoPosition != -1) {
+            String value = row.getCell(latinoPosition, CREATE_NULL_AS_BLANK).getStringCellValue();
+            return "Samba".equalsIgnoreCase(value) || "Begge grener".equalsIgnoreCase(value);
+        }
         if (latinoSambaPosition != -1) {
             String value = row.getCell(latinoSambaPosition, CREATE_NULL_AS_BLANK).getStringCellValue();
             return "ja".equalsIgnoreCase(value);
@@ -516,6 +526,10 @@ public class FileReader {
     }
 
     private boolean isRegisteredForLatinoChaChaCha(Row row) {
+        if (latinoPosition != -1) {
+            String value = row.getCell(latinoPosition, CREATE_NULL_AS_BLANK).getStringCellValue();
+            return "Cha Cha Cha".equalsIgnoreCase(value) || "Begge grener".equalsIgnoreCase(value);
+        }
         if (latinoChaChaChaPosition != -1) {
             String value = row.getCell(latinoChaChaChaPosition, CREATE_NULL_AS_BLANK).getStringCellValue();
             return "ja".equalsIgnoreCase(value);
